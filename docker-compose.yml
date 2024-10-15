@@ -9,4 +9,5 @@ services:
       - ./app:/app
     environment:
       - NODE_ENV=development
+      - API_URL=http://localhost:8080
     entrypoint: "./dev-entrypoint.sh"
