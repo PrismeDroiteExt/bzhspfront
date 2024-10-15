@@ -1,0 +1,12 @@
+services:
+  front:
+    build:
+      context: ${PWD}/dockerfiles/
+      dockerfile: Dockerfile-local
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+    environment:
+      - NODE_ENV=development
+    entrypoint: "./dev-entrypoint.sh"
