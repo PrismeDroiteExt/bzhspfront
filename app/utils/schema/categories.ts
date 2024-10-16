@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const categoriesSchema = z.object({
+export const categorieSchema = z.object({
   id: z.number(),
   name: z.string(),
   picture_url: z.string(),
@@ -8,4 +8,4 @@ export const categoriesSchema = z.object({
   id_subcategory: z.number().nullable(),
 });
 
-export type Categories = z.infer<typeof categoriesSchema>;
+export type Categorie = z.infer<typeof categorieSchema>;

@@ -3,9 +3,10 @@
 </script>
 
 <template>
-  <div class="h-screen w-screen bg-blue-100 ">
+  <div class="w-screen bg-blue-100 ">
     <HomeTopBar />
     <HomePromotion />
     <HomeCategories />
+    <HomeProducts />
   </div>
 </template>

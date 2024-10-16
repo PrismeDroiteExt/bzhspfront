@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { categories } from "@/feeder";
+import { categoriesFeeder } from "@/feeder";
 import Avatar from "../ui/avatar/Avatar.vue";
 
 const viewport = useViewport()
@@ -22,7 +22,7 @@ watch(() => viewport.breakpoint.value, (newBreakpoint, oldBreakpoint) => {
             <Button variant="link" class="text-sm text-gray-500">Tout voir</Button>
         </div>
         <div class="flex flex-row gap-4 overflow-x-auto w-full">
-            <div v-for="category in categories" :key="category.id" class="flex flex-col items-center gap-2">
+            <div v-for="category in categoriesFeeder" :key="category.id" class="flex flex-col items-center gap-2">
                 <Avatar :alt="category.name" class="w-[71px] h-[71px] lg:w-[100px] lg:h-[100px]">
                     <NuxtImg v-if="isLargeScreen" :src="category.picture_url" :alt="category.name" height="100"
                         width="100" class="object-cover" />
