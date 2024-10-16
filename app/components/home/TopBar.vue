@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ShoppingBag, Home, Search, User, X } from 'lucide-vue-next'
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, computed } from 'vue'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
+const isHomePage = computed(() => route.path === '/')
 const isSearchActive = ref(false)
 const searchQuery = ref('')
 const showIcons = ref(true)
@@ -12,7 +15,7 @@ const toggleSearch = async () => {
         await nextTick()
         setTimeout(() => {
             showIcons.value = true
-        }, 300) // Correspond à la durée de la transition
+        }, 300)
     } else {
         showIcons.value = false
         await nextTick()
@@ -36,7 +39,8 @@ const handleSearchBlur = () => {
             <NuxtImg src="/images/logo/logo_500.png" alt="logo" width="100" />
             <div class="flex-grow flex justify-center">
                 <div v-if="showIcons" class="max-md:hidden flex gap-12">
-                    <div class="flex flex-col items-center cursor-pointer hover:text-primary">
+                    <div class="flex flex-col items-center cursor-pointer hover:text-primary"
+                        :class="{ 'text-primary': isHomePage }">
                         <Home />
                         <span class="text-sm">Accueil</span>
                     </div>
