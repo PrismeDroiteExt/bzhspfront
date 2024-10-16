@@ -4,7 +4,7 @@ import { brandsFeeder } from "@/feeder";
 </script>
 
 <template>
-    <div class="bg-white flex flex-col w-full px-4 lg:px-28 gap-4">
+    <div class="bg-white flex flex-col w-full pl-4 lg:px-28 gap-4">
         <div class="flex justify-between w-full items-center">
             <h4 class="text-xl font-bold">Ça pourrait vous plaire</h4>
             <Button variant="link" class="text-sm text-gray-500">Tout voir</Button>
