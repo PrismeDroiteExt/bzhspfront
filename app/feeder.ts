@@ -58,7 +58,7 @@ export const productsFeeder: Product[] = [
   {
     id: 2,
     fk_id_brands: 2,
-    title: "Salomon",
+    title: "Chaussure de marche homme",
     description: "Chaussure de marche homme",
     fk_category_id: 1,
     price: 130,
@@ -78,5 +78,12 @@ export const brandsFeeder: Brand[] = [
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
     logo_url: "/images/home/brands/asics.png",
+  },
+  {
+    id: 2,
+    name: "Salomon",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    logo_url: "/images/home/brands/salomon.png",
   },
 ];
