@@ -4,12 +4,12 @@ import { brandsFeeder } from "@/feeder";
 </script>
 
 <template>
-    <div class="h-2/5 bg-white flex flex-col w-full px-4 lg:px-28 gap-4">
+    <div class="bg-white flex flex-col w-full px-4 lg:px-28 gap-4">
         <div class="flex justify-between w-full items-center">
             <h4 class="text-xl font-bold">Ça pourrait vous plaire</h4>
             <Button variant="link" class="text-sm text-gray-500">Tout voir</Button>
         </div>
-        <div class="flex gap-4 overflow-x-auto w-full">
+        <div class="flex gap-4 overflow-x-auto w-full scrollbar-hide">
             <div v-for="product in productsFeeder" :key="product.id">
                 <div class="flex flex-col items-start gap-2">
                     <NuxtImg :src="product.picture_url" :alt="product.title"
@@ -36,3 +36,14 @@ import { brandsFeeder } from "@/feeder";
         </div>
     </div>
 </template>
+
+<style scoped>
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+</style>
