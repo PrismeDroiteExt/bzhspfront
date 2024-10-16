@@ -5,9 +5,6 @@ module.exports = {
   darkMode: ["class"],
   safelist: ["dark"],
   prefix: "",
-  variants: {
-    display: ["responsive"],
-  },
   theme: {
     container: {
       center: true,
