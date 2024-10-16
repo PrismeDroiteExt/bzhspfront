@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="h-screen w-screen bg-blue-100">
+  <div class="h-screen w-screen bg-blue-100 ">
     <HomeTopBar />
     <HomePromotion />
     <HomeCategories />
