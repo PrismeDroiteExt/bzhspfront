@@ -10,6 +10,4 @@ services:
     environment:
       - NODE_ENV=development
       - API_URL=http://localhost:8080
-    tty: true
-    stdin_open: true
     entrypoint: "./dev-entrypoint.sh"
