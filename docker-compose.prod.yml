@@ -6,6 +6,5 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=production
-      - API_URL=http://localhost:8080
-    entrypoint: "./prod-entrypoint.sh"
+      - NODE_ENV=${NODE_ENV}
+      - API_URL=${API_URL}
