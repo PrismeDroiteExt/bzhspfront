@@ -1,0 +1,10 @@
+services:
+  front:
+    build:
+      context: ${PWD}
+      dockerfile: ./dockerfiles/Dockerfile-gha
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - API_URL=${API_URL}
