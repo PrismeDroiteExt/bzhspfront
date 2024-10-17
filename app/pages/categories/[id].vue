@@ -16,8 +16,11 @@ console.log('products', products)
 </script>
 
 <template>
-    <div class="grid grid-cols-2 gap-4 p-4">
-        <Product v-for="product in products" :key="product.id" :product="product" imageWidth="150px"
-            imageHeight="200px" />
+    <div class="p-4 flex flex-col gap-4">
+        <Filters />
+        <div class="grid grid-cols-2 gap-4">
+            <Product v-for="product in products" :key="product.id" :product="product" imageWidth="150px"
+                imageHeight="200px" />
+        </div>
     </div>
 </template>
