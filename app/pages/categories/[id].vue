@@ -4,15 +4,22 @@ definePageMeta({
     layout: 'search'
 })
 
-const categoryId = parseInt(useRoute().params.id as string)
+const route = useRoute()
+const categoryId = computed(() => parseInt(route.params.id as string))
+const params = computed(() => route.query)
 
-const { data } = await useFetch(`/api/categories/${categoryId}`)
+// Log params whenever they change
+watchEffect(() => {
+    console.log('params', params.value)
+})
 
-const category = data.value?.category
-const products = data.value?.products
+const { data } = await useFetch(() => `/api/categories/${categoryId.value}`, {
+    params
+})
 
-console.log('category', category)
-console.log('products', products)
+const category = computed(() => data.value?.category)
+const products = computed(() => data.value?.products)
+
 </script>
 
 <template>

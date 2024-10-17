@@ -29,7 +29,7 @@ const handleSelect = (value: string) => {
     const currentQuery = { ...route.query };
     currentQuery[props.filterKey.toLowerCase()] = value;
 
-    router.replace({ query: currentQuery });
+    router.push({ query: currentQuery });
 }
 
 const open = ref(false)
