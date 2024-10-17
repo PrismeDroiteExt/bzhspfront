@@ -11,27 +11,7 @@ import { brandsFeeder } from "@/feeder";
         </div>
         <div class="flex gap-4 overflow-x-auto w-full scrollbar-hide">
             <div v-for="product in productsFeeder" :key="product.id">
-                <div class="flex flex-col items-start gap-2">
-                    <NuxtImg :src="product.picture_url" :alt="product.title"
-                        class="object-cover rounded-lg max-w-[190px] max-h-[215px]" />
-                    <div class="flex flex-col gap-0">
-                        <p class="text-sm text-primary font-bold">
-                            {{ brandsFeeder.find(brand => brand.id === product.fk_id_brands)?.name }}</p>
-                        <p class="text-sm">
-                            {{ product.title.substring(0, 20) + (product.title.length > 20 ? '...' : '') }}</p>
-                    </div>
-                    <div class="flex flex-row gap-2">
-                        <p v-if="product.discount" class="text-sm font-bold text-red-500">
-                            {{ product.discount }} €
-                        </p>
-                        <p v-else class="text-sm font-bold">
-                            {{ product.price }} €
-                        </p>
-                        <p v-if="product.discount" class="text-sm line-through">
-                            {{ product.price }} €
-                        </p>
-                    </div>
-                </div>
+                <Product :product="product" imageWidth="190px" imageHeight="215px" />
             </div>
         </div>
     </div>

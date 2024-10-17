@@ -3,10 +3,21 @@
 definePageMeta({
     layout: 'search'
 })
+
+const categoryId = parseInt(useRoute().params.id as string)
+
+const { data } = await useFetch(`/api/categories/${categoryId}`)
+
+const category = data.value?.category
+const products = data.value?.products
+
+console.log('category', category)
+console.log('products', products)
 </script>
 
 <template>
-    <div>
-        Category {{ $route.params.id }}
+    <div class="grid grid-cols-2 gap-4 p-4">
+        <Product v-for="product in products" :key="product.id" :product="product" imageWidth="150px"
+            imageHeight="200px" />
     </div>
 </template>
