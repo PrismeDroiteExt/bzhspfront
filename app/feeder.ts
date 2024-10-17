@@ -66,7 +66,7 @@ export const productsFeeder: Product[] = [
     updated_at: new Date().toISOString(),
     discount: 104,
     colors: ["red", "blue", "green"],
-    sizes: [40, 41, 42, 43, 44, 45],
+    sizes: [40, 41, 42, 43, 44],
     picture_url: "/images/home/products/salomon.jpg",
   },
 ];
