@@ -12,6 +12,11 @@ const handleClickOnCategory = (id: number) => {
     navigateTo(`/categories/${id}`)
 }
 
+const handleClickOnAllCategories = () => {
+    console.log('click')
+    navigateTo('/categories')
+}
+
 watch(() => viewport.breakpoint.value, (newBreakpoint, oldBreakpoint) => {
     console.log('Breakpoint updated:', oldBreakpoint, '->', newBreakpoint)
     console.log('Is large screen:', isLargeScreen.value)
@@ -23,7 +28,7 @@ watch(() => viewport.breakpoint.value, (newBreakpoint, oldBreakpoint) => {
     <div class="h-48 lg:h-56 bg-white flex flex-col items-center w-full pl-4 lg:px-28 py-4 gap-4">
         <div class="flex justify-between w-full items-center">
             <h4 class="text-xl font-bold">Nos catégories</h4>
-            <Button variant="link" class="text-sm text-gray-500">Tout voir</Button>
+            <Button variant="link" class="text-sm text-gray-500" @click="handleClickOnAllCategories">Tout voir</Button>
         </div>
         <div class="flex flex-row gap-4 overflow-x-auto w-full scrollbar-hide">
             <div v-for="category in categoriesFeeder" :key="category.id" class="flex flex-col items-center gap-2"
