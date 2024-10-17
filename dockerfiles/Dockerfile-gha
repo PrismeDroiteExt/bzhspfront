@@ -7,15 +7,16 @@ WORKDIR /app
 COPY ../app/ /app/
 
 RUN rm -rf ./node_modules && \
-    rm -rf ./package-lock.json
+    rm -rf ./package-lock.json && \
+    rm -rf ./.nuxt
 
-RUN npm install pm2 -g
+RUN npm install -g npm@latest pm2
 
-# Install the dependencies
-RUN npm install --omit=dev
+# # Install the dependencies
+RUN npm install
+
+RUN npm run postinstall
 
 RUN npm run build
 
-
-# CMD ["pm2-runtime", "start", "nuxt", "start"]
-# CMD ["nuxt", "start"]
+# CMD ["pm2-runtime", "start", "ecosystem.config.cjs"]

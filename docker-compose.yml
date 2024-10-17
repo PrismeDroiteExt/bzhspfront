@@ -1,8 +1,8 @@
 services:
   front:
     build:
-      context: ${PWD}/dockerfiles/
-      dockerfile: Dockerfile-local
+      context: ${PWD}
+      dockerfile: ./dockerfiles/Dockerfile-local
     ports:
       - "3000:3000"
     volumes:
