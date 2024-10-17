@@ -21,11 +21,10 @@ const props = defineProps<{
     filterName: string
     filterKey: string
 }>()
+const route = useRoute();
+const router = useRouter();
 
 const handleSelect = (value: string) => {
-    const route = useRoute();
-    const router = useRouter();
-
     const currentQuery = { ...route.query };
     currentQuery[props.filterKey.toLowerCase()] = value;
 
@@ -33,7 +32,7 @@ const handleSelect = (value: string) => {
 }
 
 const open = ref(false)
-const value = ref('')
+const value = ref(route.query[props.filterKey.toLowerCase()])
 </script>
 
 <template>
