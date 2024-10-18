@@ -1,6 +1,6 @@
 name: Auto Assign
 on:
-  issues:
+  pull_request:
     types: [opened]
 jobs:
   run:
@@ -13,7 +13,7 @@ jobs:
       uses: pozil/auto-assign-issue@v1
       with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          assignees: kiloutyg,RomainCrz
-          numOfAssignee: 1
+          assignees: jehanvaire,T4rg3n,kiloutyg,RomainCrz
+          numOfAssignee: 3
           abortIfPreviousAssignees: true 
           allowSelfAssign: true
