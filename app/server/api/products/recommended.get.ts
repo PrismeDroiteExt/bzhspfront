@@ -22,9 +22,16 @@ export default defineEventHandler(async (event) => {
     return JSON.parse(responseText);
   } catch (error) {
     console.error("Detailed error:", error);
-    throw createError({
-      statusCode: 500,
-      message: `Failed to fetch recommended products: ${error.message}`,
-    });
+    if (error instanceof Error) {
+      throw createError({
+        statusCode: 500,
+        message: `Failed to fetch recommended products: ${error.message}`,
+      });
+    } else {
+      throw createError({
+        statusCode: 500,
+        message: `Failed to fetch recommended products: ${error}`,
+      });
+    }
   }
 });
