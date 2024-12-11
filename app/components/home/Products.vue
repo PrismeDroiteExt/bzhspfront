@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { productsFeeder } from "@/feeder";
-import { brandsFeeder } from "@/feeder";
+const { data: products } = await useFetch("/api/products/recommended");
+
+console.log("products", products);
 </script>
 
 <template>
@@ -10,7 +11,7 @@ import { brandsFeeder } from "@/feeder";
             <Button variant="link" class="text-sm text-gray-500">Tout voir</Button>
         </div>
         <div class="flex gap-4 overflow-x-auto w-full scrollbar-hide">
-            <div v-for="product in productsFeeder" :key="product.id">
+            <div v-for="product in products" :key="product.id">
                 <Product :product="product" imageWidth="190px" imageHeight="215px" />
             </div>
         </div>
