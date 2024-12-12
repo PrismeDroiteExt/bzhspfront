@@ -22,8 +22,10 @@ const router = useRouter()
 
 <template>
     <div class="flex flex-col items-start gap-2 min-w-[190px]">
-        <div :style="{ width: imageWidth, height: imageHeight }" class="overflow-hidden">
-            <img :src="product.picture_url" :alt="product.title" class="object-cover rounded-lg w-full h-full" />
+        <div class="flex w-full justify-center">
+            <div :style="{ width: imageWidth, height: imageHeight }" class="overflow-hidden">
+                <img :src="product.picture_url" :alt="product.title" class="object-cover rounded-lg w-full h-full" />
+            </div>
         </div>
         <div class="flex flex-col gap-0">
             <p class="text-sm text-primary font-bold">

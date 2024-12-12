@@ -31,10 +31,10 @@ const brands = await getBrandFilters()
 
 <template>
     <div class="flex flex-row gap-2 overflow-x-auto h-10">
-        <FiltersSelect :options="sizes" filterName="Tailles" filterKey="size" />
-        <FiltersSelect :options="colors" filterName="Couleurs" filterKey="color" />
+        <FiltersSelect :options="sizes" filterName="Tailles" filterKey="sizes" />
+        <FiltersSelect :options="colors" filterName="Couleurs" filterKey="colors" />
         <FiltersSelect :options="brands" filterName="Marques" filterKey="brand" />
-        <FiltersPriceInput type="min" filterName="Prix min" filterKey="minPrice" />
-        <FiltersPriceInput type="max" filterName="Prix max" filterKey="maxPrice" />
+        <FiltersPriceInput type="min" filterName="Prix min" filterKey="min_price" />
+        <FiltersPriceInput type="max" filterName="Prix max" filterKey="max_price" />
     </div>
 </template>
