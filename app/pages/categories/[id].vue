@@ -13,12 +13,15 @@ watchEffect(() => {
     console.log('params', params.value)
 })
 
-const { data } = await useFetch(() => `/api/categories/${categoryId.value}`, {
+console.log('calling api for products by category', categoryId.value, `/api/products/category/${categoryId.value}`)
+const { data } = await useFetch(() => `/api/products/category/${categoryId.value}`, {
     params
 })
 
-const category = computed(() => data.value?.category)
-const products = computed(() => data.value?.products)
+console.log('data', data.value)
+
+const products = computed(() => data.value)
+
 
 </script>
 

@@ -1,5 +1,4 @@
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
   const query = getQuery(event);
 
   if (!query.query) {
@@ -20,7 +19,7 @@ export default defineEventHandler(async (event) => {
   if (query.sizes) queryParams.append("sizes", query.sizes as string);
 
   try {
-    const response = await fetch(`${config.public.API_BASE_URL}/products/search?${queryParams.toString()}`);
+    const response = await fetch(`${process.env.API_BASE_URL}/products/search?${queryParams.toString()}`);
     if (!response.ok) throw new Error("Failed to search products");
 
     return await response.json();

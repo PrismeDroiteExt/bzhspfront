@@ -1,8 +1,6 @@
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
-
   try {
-    const response = await fetch(`${config.public.API_BASE_URL}/brands`);
+    const response = await fetch(`${process.env.API_BASE_URL}/brands`);
     if (!response.ok) throw new Error("Failed to fetch brands");
 
     return await response.json();

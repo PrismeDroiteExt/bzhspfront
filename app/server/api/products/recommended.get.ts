@@ -1,8 +1,6 @@
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
-
   try {
-    const url = `${config.public.API_BASE_URL}/products/recommended`;
+    const url = `${process.env.API_BASE_URL}/products/recommended`;
     console.log("Calling API:", url);
 
     const response = await fetch(url, {

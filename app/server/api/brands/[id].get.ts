@@ -1,9 +1,8 @@
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, "id");
-  const config = useRuntimeConfig();
 
   try {
-    const response = await fetch(`${config.public.API_BASE_URL}/brands/${id}`);
+    const response = await fetch(`${process.env.API_BASE_URL}/brands/${id}`);
     if (!response.ok) throw new Error("Brand not found");
 
     return await response.json();
