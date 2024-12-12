@@ -5,7 +5,8 @@ export default defineEventHandler(async (event) => {
     const response = await fetch(`${process.env.API_BASE_URL}/brands/${id}`);
     if (!response.ok) throw new Error("Brand not found");
 
-    return await response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
     throw createError({
       statusCode: 404,

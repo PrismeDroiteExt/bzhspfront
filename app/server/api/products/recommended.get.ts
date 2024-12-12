@@ -1,7 +1,6 @@
 export default defineEventHandler(async (event) => {
   try {
     const url = `${process.env.API_BASE_URL}/products/recommended`;
-    console.log("Calling API:", url);
 
     const response = await fetch(url, {
       headers: {
@@ -9,9 +8,7 @@ export default defineEventHandler(async (event) => {
       },
     });
 
-    console.log("Response status:", response.status);
     const responseText = await response.text();
-    console.log("Response body:", responseText);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}, body: ${responseText}`);

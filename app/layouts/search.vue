@@ -7,7 +7,7 @@ const router = useRouter()
 <template>
     <div>
         <div class="flex items-center justify-between px-4 py-2 gap-4">
-            <ArrowLeft @click="router.back()" />
+            <ArrowLeft @click="router.push('/')" />
             <div class="relative w-full max-w-sm items-center">
                 <Input id="search" type="text" placeholder="Rechercher" class="pl-10" />
                 <span class="absolute start-0 inset-y-0 flex items-center justify-center px-2">
