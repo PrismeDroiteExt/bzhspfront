@@ -9,6 +9,15 @@ const props = defineProps<{
 }>()
 
 const brand = brandsFeeder.find(brand => brand.id === props.product.fk_id_brands)
+
+const router = useRouter()
+
+</script>
+
+<template>
+    <div class="flex flex-col items-start gap-2" @click="router.push(`/product/${product.id}`)">
+        <NuxtImg :src="product.picture_url" :alt="product.title"
+            :class="`object-cover rounded-lg max-w-[${imageWidth}] max-h-[${imageHeight}]`" />
 </script>
 
 <template>
