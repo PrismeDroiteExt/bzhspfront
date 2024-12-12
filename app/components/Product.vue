@@ -2,7 +2,6 @@
 import { brandsFeeder } from '@/feeder';
 import type { Product } from '@/utils/schema/products';
 
-
 const props = defineProps<{
     product: Product
     imageWidth: string
@@ -19,6 +18,13 @@ const router = useRouter()
     <div class="flex flex-col items-start gap-2" @click="router.push(`/product/${product.id}`)">
         <NuxtImg :src="product.picture_url" :alt="product.title"
             :class="`object-cover rounded-lg max-w-[${imageWidth}] max-h-[${imageHeight}]`" />
+</script>
+
+<template>
+    <div class="flex flex-col items-start gap-2 min-w-[190px]">
+        <div :style="{ width: imageWidth, height: imageHeight }" class="overflow-hidden">
+            <img :src="product.picture_url" :alt="product.title" class="object-cover rounded-lg w-full h-full" />
+        </div>
         <div class="flex flex-col gap-0">
             <p class="text-sm text-primary font-bold">
                 {{ brand?.name }}</p>
