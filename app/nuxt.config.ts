@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   shadcn: {
     componentDir: "./components/ui",
   },
+  nitro: {
+    debug: true,
+  },
   viewport: {
     breakpoints: {
       sm: 640,
