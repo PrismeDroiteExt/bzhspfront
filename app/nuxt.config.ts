@@ -18,8 +18,20 @@ export default defineNuxtConfig({
   },
   postcss: {
     plugins: {
-      tailwindcss: {},
+      tailwindcss: {
+        exposeConfig: true,
+        configPath: "tailwind.config.js",
+        cssPath: "~/assets/css/tailwind.css",
+        viewer: true,
+      },
       autoprefixer: {},
+    },
+  },
+  runtimeConfig: {
+    // Make environment variables accessible here
+    public: {
+      API_BASE_URL: process.env.API_BASE_URL,
+      // Add more environment variables as needed
     },
   },
 });
