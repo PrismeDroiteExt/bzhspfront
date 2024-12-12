@@ -6,7 +6,6 @@ export default defineEventHandler(async (event) => {
     if (!response.ok) throw new Error("Brand not found");
 
     const data = await response.json();
-    console.log("brand fetched from server", data);
     return data;
   } catch (error) {
     throw createError({

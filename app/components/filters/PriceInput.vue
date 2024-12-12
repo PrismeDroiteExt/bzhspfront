@@ -54,7 +54,6 @@ const value = ref(NaN)
 watch(() => route.query, (newQuery) => {
     const otherKey = props.type === 'min' ? 'maxprice' : 'minprice'
     if (newQuery[otherKey]) {
-        console.log(newQuery[otherKey])
         handleChange(value.value) // Re-validate current value
     }
 }, { deep: true })

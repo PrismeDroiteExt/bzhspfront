@@ -15,7 +15,8 @@ const router = useRouter()
 </script>
 
 <template>
-    <div class="flex flex-col items-start gap-2 min-w-[190px]" @click="router.push(`/product/${product.id}`)">
+    <div class="flex flex-col items-start gap-2 min-w-[190px] shadow-sm rounded-md p-2"
+        @click="router.push(`/product/${product.id}`)">
         <div class="flex w-full justify-center">
             <div :style="{ width: imageWidth, height: imageHeight }" class="overflow-hidden">
                 <img :src="product.picture_url" :alt="product.title" class="object-cover rounded-lg w-full h-full" />
