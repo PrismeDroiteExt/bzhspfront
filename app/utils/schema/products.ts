@@ -13,6 +13,7 @@ export const productSchema = z.object({
   colors: z.array(z.string()),
   sizes: z.array(z.number()),
   picture_url: z.string(),
+  body: z.string(),
 });
 
 export type Product = z.infer<typeof productSchema>;

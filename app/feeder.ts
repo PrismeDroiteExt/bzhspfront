@@ -51,9 +51,12 @@ export const productsFeeder: Product[] = [
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
     discount: 115,
-    colors: ["red", "blue", "green"],
+    colors: ["#004AAD", "#A6B1E1", "#FFB12C"],
     sizes: [40, 41, 42, 43, 44, 45],
     picture_url: "/images/home/products/asics.jpg",
+    body: `Chaussure idéale pour un usage intensif sur longues et moyennes distances, extrêmement confortable et 
+
+Repensée avec de nouveaux matériaux, la GEL-Ziruss 8 est plus moelleuse et rebondissante. Elle est dotée de l'amorti ASICS le plus dense et sa mousse légère.`,
   },
   {
     id: 2,
@@ -65,9 +68,12 @@ export const productsFeeder: Product[] = [
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
     discount: 104,
-    colors: ["red", "blue", "green"],
+    colors: ["#004AAD", "#A6B1E1", "#FFB12C"],
     sizes: [40, 41, 42, 43, 44],
     picture_url: "/images/home/products/salomon.jpg",
+    body: `Chaussure idéale pour un usage intensif sur longues et moyennes distances, extrêmement confortable et 
+
+Repensée avec de nouveaux matériaux, la GEL-Ziruss 8 est plus moelleuse et rebondissante. Elle est dotée de l'amorti ASICS le plus dense et sa mousse légère.`,
   },
 ];
 
