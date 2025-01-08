@@ -40,5 +40,5 @@ services:
       - AUTH_API_URL=http://localhost:8081
       - PRODUCT_API_URL=http://localhost:8082
       - API_BASE_URL=http://product-service:8081/api/v1
-    entrypoint: "./dev-entrypoint.sh"
+    entrypoint: "./test-entrypoint.sh"
 
