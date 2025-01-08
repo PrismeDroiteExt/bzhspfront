@@ -22,7 +22,42 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    services:
+      product-service:
+        image: ghcr.io/prismedroiteext/bzhspproduct:latest
+        credentials:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+        ports:
+          - 8081:8081 
+        env:
+          NODE_ENV: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: bzhspfront/app/package-lock.json
+
+      - name: Install dependencies
+        working-directory: bzhspfront/app
+        run: npm ci
+
+      - name: Run e2e tests
+        working-directory: bzhspfront/app
+        run: npm run test
+        env:
+          API_BASE_URL=http://product-service:8081/api/v1
+
   build:
+    needs: e2e-tests
     runs-on: ubuntu-latest
     permissions:
       contents: read
