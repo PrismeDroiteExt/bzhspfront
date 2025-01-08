@@ -44,14 +44,15 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-          cache-dependency-path: bzhspfront/app/package-lock.json
+          cache-dependency-path: ./app/package-lock.json
+          
 
       - name: Install dependencies
-        working-directory: bzhspfront/app
+        working-directory: ./app
         run: npm ci
 
       - name: Run e2e tests
-        working-directory: bzhspfront/app
+        working-directory: ./app
         run: npm run test
         env:
           API_BASE_URL: http://product-service:8081/api/v1
