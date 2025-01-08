@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.1",
+    "@playwright/test": "^1.49.1",
     "shadcn-nuxt": "^0.10.4",
     "typescript": "^5.6.3"
   }
