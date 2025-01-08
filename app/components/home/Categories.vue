@@ -27,7 +27,7 @@ watch(() => viewport.breakpoint.value, (newBreakpoint, oldBreakpoint) => {
 <template>
     <div class="h-48 lg:h-56 bg-white flex flex-col items-center w-full pl-4 lg:px-28 py-4 gap-4">
         <div class="flex justify-between w-full items-center">
-            <h4 class="text-xl font-bold">Nos catégories</h4>
+            <h3 class="text-xl font-bold">Nos catégories</h3>
             <Button variant="link" class="text-sm text-gray-500" @click="handleClickOnAllCategories">Tout voir</Button>
         </div>
         <div class="flex flex-row gap-4 overflow-x-auto w-full scrollbar-hide">

@@ -23,7 +23,7 @@ const products = computed(() => data.value)
 </script>
 
 <template>
-    <div class="p-4 flex flex-col gap-4">
+    <div id="category-page" class="p-4 flex flex-col gap-4">
         <Filters />
         <div class="grid grid-cols-2 gap-4">
             <Product v-for="product in products" :key="product.id" :product="product" imageWidth="150px"
