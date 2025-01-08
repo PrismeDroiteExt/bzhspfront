@@ -54,7 +54,7 @@ jobs:
         working-directory: bzhspfront/app
         run: npm run test
         env:
-          API_BASE_URL=http://product-service:8081/api/v1
+          API_BASE_URL: http://product-service:8081/api/v1
 
   build:
     needs: e2e-tests
