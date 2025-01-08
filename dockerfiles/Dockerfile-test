@@ -6,22 +6,7 @@ EXPOSE 3000
 # # Set the working directory
 WORKDIR /app
 
-# # Install dependencies required for Playwright
-RUN apk add --no-cache \
-    chromium \
-    firefox \
-    webkit \
-    # Dependencies for Playwright
-    nss \
-    freetype \
-    freetype-dev \
-    ttf-freefont \
-    font-noto-emoji \
-    # Dependencies for browsers
-    dbus \
-    xvfb \
-    # Tools
-    bash
+
 
 # # Copy the app
 COPY ../app/ /app/
