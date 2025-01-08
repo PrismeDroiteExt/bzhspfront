@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       product-service:
-        image: ghcr.io/prismedroiteext/bzhspproduct
+        image: ghcr.io/prismedroiteext/bzhspproduct:sha256-abe58a6578274c895f93eacd06b1cbdb05e347326460ba1cfdd8d5f01cd22db4
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
