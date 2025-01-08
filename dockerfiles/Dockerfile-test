@@ -15,16 +15,12 @@ RUN rm -rf ./node_modules && \
     rm -rf ./.nuxt && \
     rm -f /tmp/nitro/worker-*.sock
 
-# # Install the dependencies
-RUN npm install -g npm@latest pm2
+# # Install global dependencies
+RUN npm install -g npm@latest
 
-# # Install the dependencies
-RUN npm install
+# # Install project dependencies and Playwright
+RUN npm install && \
+    npm init playwright@latest -y && \
+    npm run postinstall
 
-RUN npm init playwright@latest
-
-# # Run the postinstall
-RUN npm run postinstall
-
-# # Run the app
-CMD ["npm", "run", 'dev']
+# # Par défaut, on ne met pas de CMD car on veut pouvoir exécuter différentes commandes
