@@ -27,4 +27,4 @@ RUN npm init playwright@latest
 RUN npm run postinstall
 
 # # Run the app
-CMD ["npm", "run", 'test']
+CMD ["npm", "run", 'dev']
