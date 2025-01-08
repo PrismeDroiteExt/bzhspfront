@@ -30,7 +30,7 @@ services:
   front:
     build:
       context: ./
-      dockerfile: ./dockerfiles/Dockerfile-local
+      dockerfile: ./dockerfiles/Dockerfile-test
     ports:
       - "3000:3000"
     volumes:
