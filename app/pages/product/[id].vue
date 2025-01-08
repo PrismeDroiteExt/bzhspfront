@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { brandsFeeder } from '@/feeder';
-
 // Récupérer les produits de la catégorie, ainsi que les marques
 definePageMeta({
     layout: 'product'
@@ -78,10 +76,10 @@ const handleImageLoad = () => {
                 </div>
             </div>
             <div id="buttons" class="flex flex-row gap-2 mt-4 justify-center">
-                <Button class="bg-black text-white px-4 py-2 rounded-md w-44">
+                <Button id="add-to-cart" class="bg-black text-white px-4 py-2 rounded-md w-44">
                     <ShoppingCart class="w-4 h-4 mr-2" /> Ajouter au panier
                 </Button>
-                <Button class="bg-primary text-white px-4 py-2 rounded-md w-44">
+                <Button id="buy-now" class="bg-primary text-white px-4 py-2 rounded-md w-44">
                     <CircleDollarSign class="w-4 h-4 mr-2" /> Acheter
                 </Button>
             </div>

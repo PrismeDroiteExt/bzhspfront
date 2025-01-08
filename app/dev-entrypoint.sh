@@ -2,8 +2,6 @@
 
 # Clean up before starting
 rm -f /tmp/nitro/worker-*.sock
-rm -rf ./.nuxt
-rm -rf node_modules
 
 # Install npm@latest
 npm install -g npm@latest

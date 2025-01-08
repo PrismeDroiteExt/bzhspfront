@@ -38,14 +38,15 @@ const value = ref(route.query[props.filterKey.toLowerCase()])
 <template>
     <Popover v-model:open="open">
         <PopoverTrigger as-child>
-            <Button variant="outline" role="combobox" :aria-expanded="open" class="justify-between h-8">
+            <Button :id="`filter-button-${filterKey}`" variant="outline" role="combobox" :aria-expanded="open"
+                class="justify-between h-8">
                 {{ value
                     ? options.find((option) => option.value === value)?.label
                     : `${filterName}` }}
                 <ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
         </PopoverTrigger>
-        <PopoverContent class="w-[200px] p-0">
+        <PopoverContent class="w-[200px] p-0" :id="`filter-popover-${filterKey}`">
             <Command>
                 <CommandList>
                     <CommandGroup>
