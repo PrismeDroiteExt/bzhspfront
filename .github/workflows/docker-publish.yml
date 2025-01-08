@@ -24,17 +24,6 @@ env:
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest
-    services:
-      product-service:
-        image: ghcr.io/prismedroiteext/bzhspproduct:dev
-        credentials:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-        ports:
-          - 8081:8081 
-        env:
-          NODE_ENV: test
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -45,7 +34,18 @@ jobs:
           node-version: '18'
           cache: 'npm'
           cache-dependency-path: ./app/package-lock.json
-          
+
+      # Ajout de la connexion au registry GitHub
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Démarrage des services avec docker-compose
+      - name: Start services with Docker Compose
+        run: docker-compose -f docker-compose.test.yml up -d
 
       - name: Install dependencies
         working-directory: ./app
@@ -55,7 +55,12 @@ jobs:
         working-directory: ./app
         run: npm run test
         env:
-          API_BASE_URL: http://product-service:8081/api/v1
+          API_BASE_URL: http://localhost:8081/api/v1
+
+      # Optionnel : arrêt des services après les tests
+      - name: Stop services
+        if: always()
+        run: docker-compose -f docker-compose.test.yml down
 
   build:
     needs: e2e-tests
