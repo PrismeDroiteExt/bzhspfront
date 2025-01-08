@@ -6,6 +6,23 @@ EXPOSE 3000
 # # Set the working directory
 WORKDIR /app
 
+# # Install dependencies required for Playwright
+RUN apk add --no-cache \
+    chromium \
+    firefox \
+    webkit \
+    # Dependencies for Playwright
+    nss \
+    freetype \
+    freetype-dev \
+    ttf-freefont \
+    font-noto-emoji \
+    # Dependencies for browsers
+    dbus \
+    xvfb \
+    # Tools
+    bash
+
 # # Copy the app
 COPY ../app/ /app/
 
@@ -20,7 +37,12 @@ RUN npm install -g npm@latest
 
 # # Install project dependencies and Playwright
 RUN npm install && \
+    npx playwright install-deps && \
     npm init playwright@latest -y && \
+    npx playwright install --with-deps chromium && \
     npm run postinstall
+
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+ENV PLAYWRIGHT_BROWSERS_PATH=/usr/lib/chromium
 
 # # Par défaut, on ne met pas de CMD car on veut pouvoir exécuter différentes commandes
