@@ -15,7 +15,7 @@
     "@nuxt/image": "^1.8.1",
     "@vueuse/core": "^11.1.0",
     "class-variance-authority": "^0.7.0",
-    "lucide-vue-next": "^0.453.0",
+    "lucide-vue-next": "^0.471.0",
     "nuxt": "^3.13.0",
     "nuxt-viewport": "^2.2.0",
     "radix-vue": "^1.9.7",
