@@ -11,7 +11,7 @@
     "test": "playwright test"
   },
   "dependencies": {
-    "@nuxt/eslint": "^0.6.0",
+    "@nuxt/eslint": "^0.7.5",
     "@nuxt/image": "^1.8.1",
     "@vueuse/core": "^11.1.0",
     "class-variance-authority": "^0.7.0",
