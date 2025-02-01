@@ -19,7 +19,7 @@
     "nuxt": "^3.13.0",
     "nuxt-viewport": "^2.2.0",
     "radix-vue": "^1.9.7",
-    "shadcn-nuxt": "^0.10.4",
+    "shadcn-nuxt": "^0.11.3",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "vue": "latest",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@playwright/test": "^1.49.1",
-    "shadcn-nuxt": "^0.10.4",
+    "shadcn-nuxt": "^0.11.3",
     "typescript": "^5.6.3"
   }
 }
