@@ -126,3 +126,30 @@ jobs:
         #         cosign sign --yes $tag@$DIGEST
         #       done
             
+  proof-html:
+    # Exécuter seulement si le job "build" s'est terminé avec succès
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - uses: anishathalye/proof-html@v1.1.0
+        with:
+          directory: ./app
+
+  auto-assign-pr-reviews:
+    needs: proof-html
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - name: 'Auto-assign issue'
+      uses: pozil/auto-assign-issue@v1
+      with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          assignees: jehanvaire,T4rg3n,kiloutyg,RomainCrz
+          numOfAssignee: 3
+          abortIfPreviousAssignees: true 
+          allowSelfAssign: true
