@@ -1,9 +1,13 @@
 name: Proof HTML
 on:
-  push:
-  workflow_dispatch:
+  workflow_run:
+    # Le nom doit correspondre exactement au nom du workflow précédent
+    workflows: ["Docker"]
+    types: [completed]
 jobs:
   build:
+    # Exécuter seulement si le workflow "Docker" s'est terminé avec succès
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: anishathalye/proof-html@v1.1.0

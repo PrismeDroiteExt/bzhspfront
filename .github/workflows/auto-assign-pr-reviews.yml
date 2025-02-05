@@ -1,9 +1,13 @@
 name: Auto Assign
 on:
-  pull_request:
-    types: [opened]
+  workflow_run:
+    # Le nom doit correspondre exactement au workflow précédent ("Proof HTML" ici)
+    workflows: ["Proof HTML"]
+    types: [completed]
 jobs:
   run:
+    # Exécuter seulement si le workflow "Proof HTML" s'est terminé avec succès
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
