@@ -87,8 +87,6 @@ jobs:
       - name: Run Snyk test for vulnerabilities
         continue-on-error: true # To make sure that SARIF upload gets called
         uses: snyk/actions/node@master
-        with:
-          args: test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
