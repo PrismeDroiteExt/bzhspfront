@@ -29,11 +29,3 @@ RUN npm install && \
     npm install -D @playwright/test && \
     npm run postinstall 
 
-# Ensure Playwright is in the PATH
-ENV PATH="/app/node_modules/.bin:${PATH}"
-
-# Configure Playwright
-ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-ENV PLAYWRIGHT_BROWSERS_PATH=/usr/lib/chromium
-
-# # Par défaut, on ne met pas de CMD car on veut pouvoir exécuter différentes commandes
