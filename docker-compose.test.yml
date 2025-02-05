@@ -33,8 +33,6 @@ services:
       dockerfile: ./dockerfiles/Dockerfile-test
     ports:
       - "3000:3000"
-    volumes:
-      - ./app:/app
     environment:
       - NODE_ENV=development
       - AUTH_API_URL=http://localhost:8081
