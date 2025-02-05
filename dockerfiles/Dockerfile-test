@@ -25,9 +25,9 @@ RUN npm install && \
     npx playwright install-deps && \
     npm init playwright@latest -y && \
     npx playwright install --with-deps chromium && \
-    npm run postinstall && \
     npm install -g playwright && \
-    npm install -D @playwright/test
+    npm install -D @playwright/test && \
+    npm run postinstall 
 
 # Ensure Playwright is in the PATH
 ENV PATH="/app/node_modules/.bin:${PATH}"
