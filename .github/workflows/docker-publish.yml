@@ -49,9 +49,59 @@ jobs:
         if: always()
         run: docker compose -f docker-compose.test.yml down
 
- 
-  sonarcloud:
+  snyk-security:
     needs: e2e-tests
+    name: Snyk Security Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Set up Snyk
+        uses: snyk/actions/setup@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      
+      - name: Set snyk auth
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Snyk test for vulnerabilities
+        uses: snyk/actions/node@master
+        with:
+          args: >
+            test --severity-threshold=high
+            test --sarif-file-output=snyk.sarif
+        continue-on-error: true # To make sure that SARIF upload gets called
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Snyk monitor
+        run: npx snyk test monitor
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        continue-on-error: true # To make sure that SARIF upload gets called
+
+  sonarcloud:
+    needs: snyk-security
     name: SonarQube Cloud
     runs-on: ubuntu-latest
     steps:
