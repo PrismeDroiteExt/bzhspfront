@@ -25,11 +25,14 @@ RUN npm install && \
     npx playwright install-deps && \
     npm init playwright@latest -y && \
     npx playwright install --with-deps chromium && \
-    npm run postinstall
+    npm run postinstall && \
+    npm install -g playwright && \
+    npm install -D @playwright/test
 
-RUN npm install -D @playwright/test
-RUN npx playwright install --with-deps
+# Ensure Playwright is in the PATH
+ENV PATH="/app/node_modules/.bin:${PATH}"
 
+# Configure Playwright
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 ENV PLAYWRIGHT_BROWSERS_PATH=/usr/lib/chromium
 
