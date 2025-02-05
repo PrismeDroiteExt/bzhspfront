@@ -1,0 +1,41 @@
+services:
+  product-service:
+    image: ghcr.io/prismedroiteext/bzhspproduct:dev
+    ports:
+      - "8081:8081"
+    environment:
+      - PRODUCT_DB_HOST=db-product
+      - PRODUCT_DB_USER=product_user
+      - PRODUCT_DB_PASSWORD=test
+      - PRODUCT_DB_NAME=product_db
+      - DB_PORT=5432
+      - DB_SSLMODE=disable
+      - DB_TIMEZONE=Europe/Paris
+      - GIN_MODE=debug
+    entrypoint:
+      - ./scripts/dev-entrypoint.sh
+    depends_on:
+      - db-product
+  db-product:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: product_user
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: product_db
+    volumes:
+      - ./volumes/product-db-data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+
+  front:
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/Dockerfile-test
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - AUTH_API_URL=http://localhost:8081
+      - PRODUCT_API_URL=http://localhost:8082
+      - API_BASE_URL=http://product-service:8081/api/v1
+
