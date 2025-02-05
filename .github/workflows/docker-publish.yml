@@ -64,6 +64,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
+
       - name: Set up Snyk
         uses: snyk/actions/setup@master
         env:
@@ -71,7 +72,7 @@ jobs:
       
       - name: Set snyk auth
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
-        
+
       - name: Cache NPM dependencies
         uses: actions/cache@v3
         with:
@@ -85,11 +86,10 @@ jobs:
 
       - name: Run Snyk test for vulnerabilities
         uses: snyk/actions/node@master
-        run: snyk 
-        # with:
-        #   args: >
-        #     test --severity-threshold=high
-        #     test --sarif-file-output=snyk.sarif
+        with:
+          args: >
+            test --severity-threshold=high
+            test --sarif-file-output=snyk.sarif
         continue-on-error: true # To make sure that SARIF upload gets called
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
