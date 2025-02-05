@@ -85,20 +85,18 @@ jobs:
         run: npm install
 
       - name: Run Snyk test for vulnerabilities
+        continue-on-error: true # To make sure that SARIF upload gets called
         uses: snyk/actions/node@master
         with:
-          args: >
-            test --severity-threshold=high
-            test --sarif-file-output=snyk.sarif
-        continue-on-error: true # To make sure that SARIF upload gets called
+          args: test --severity-threshold=high --sarif-file-output=snyk.sarif
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Run Snyk monitor
+        continue-on-error: true # To make sure that SARIF upload gets called
         run: npx snyk test monitor
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        continue-on-error: true # To make sure that SARIF upload gets called
 
   sonarcloud:
     needs: snyk-security
