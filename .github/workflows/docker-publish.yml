@@ -84,15 +84,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Snyk test for vulnerabilities
-        continue-on-error: true # To make sure that SARIF upload gets called
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
       - name: Run Snyk monitor
         continue-on-error: true # To make sure that SARIF upload gets called
-        run: npx snyk test monitor
+        run: snyk test monitor
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
