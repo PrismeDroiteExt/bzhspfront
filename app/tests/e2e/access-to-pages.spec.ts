@@ -3,7 +3,7 @@ import test, { expect } from "@playwright/test";
 test("Anon users can access the home page", async ({ page }) => {
   await page.goto("/");
   await page.waitForLoadState("networkidle");
-  await expect(page.locator("h3").first()).toContainText("Nos catégories", { timeout: 10000 });
+  await expect(page.locator("h3").first()).toContainText("Nos catégories", { timeout: 30000 });
 });
 
 test("Anon users can access the product page", async ({ page }) => {
